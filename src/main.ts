@@ -5,6 +5,8 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  app.enableCors();
+  
   const config = new DocumentBuilder()
     .setTitle('TVET API')
     .setDescription('Api to retrive SQL Server Database')

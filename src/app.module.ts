@@ -3,8 +3,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import config from 'ormconfig';
-import { Student } from './student/entities/student.entity';
-import { StudentService } from './student/student.service';
 import { StudentModule } from './student/student.module';
 import { TeacherModule } from './teacher/teacher.module';
 
