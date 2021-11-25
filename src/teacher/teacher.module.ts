@@ -3,6 +3,7 @@ import { TeacherService } from './teacher.service';
 import { TeacherController } from './teacher.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Teacher } from './entities/teacher.entity';
+import { Channel } from 'src/channel/entities/channel.entity';
 
 @Module({
   imports: [

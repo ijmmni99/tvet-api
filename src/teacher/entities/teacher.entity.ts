@@ -1,10 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Channel } from "src/channel/entities/channel.entity";
+import { Column, Entity, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Teacher {
-    @PrimaryGeneratedColumn()
-    teacherId: number;
+    @PrimaryColumn()
+    teacherId: string;
 
     @Column()
-    nickname: string;
+    name: string;
+
+    @OneToMany(() => Channel, (Channel) => 
+        Channel.lecturerID, {onUpdate: 'CASCADE', onDelete: 'CASCADE'})
+        channels: Channel[];
 }

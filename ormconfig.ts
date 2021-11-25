@@ -8,7 +8,7 @@ const config: SqlServerConnectionOptions  = {
     username: 'nyz',
     password: 'nyz123',
     entities: ['dist/src/**/*.entity.js'],
-    synchronize: true,
+    synchronize: false,
     options: {
         encrypt: false,
         enableArithAbort: true,

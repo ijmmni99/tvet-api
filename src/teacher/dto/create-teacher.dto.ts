@@ -1,10 +1,14 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { Channel } from "src/channel/entities/channel.entity";
 
 export class CreateTeacherDto {
     @ApiProperty()
-    teacherId: number;
+    teacherId: string;
 
     @ApiProperty()
-    nickname: string;
+    name: string;
+
+    @ApiProperty()
+    channels: Channel[];
 }
 

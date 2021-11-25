@@ -19,7 +19,7 @@ export class StudentService {
     return this.studentRespository.find(); // SELECT * FROM Student;
   }
 
-  async findOne(id: number) : Promise<Student> {
+  async findOne(id: string) : Promise<Student> {
     try{
       const student = await this.studentRespository.findOneOrFail(id); // SELECT * FROM Student WHERE Student.id = id;
       return student;
@@ -31,15 +31,15 @@ export class StudentService {
   } 
     
 
-  async update(id: number, updateStudentDto: UpdateStudentDto): Promise<Student> {
+  async update(id: string, updateStudentDto: UpdateStudentDto): Promise<Student> {
     const student = await this.findOne(id);
 
-    student.nickname = updateStudentDto.nickname;
+    student.name = updateStudentDto.name;
 
     return this.studentRespository.save(student);
   }
 
-  async remove(id: number): Promise<Student> {
+  async remove(id: string): Promise<Student> {
     const student = await this.findOne(id);
 
     return this.studentRespository.remove(student);
