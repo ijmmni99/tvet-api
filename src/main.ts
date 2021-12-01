@@ -4,8 +4,6 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
-  app.enableCors();
   
   const config = new DocumentBuilder()
     .setTitle('TVET API')
@@ -13,10 +11,10 @@ async function bootstrap() {
     .setVersion('1.0.0')
     .build()
 
-    const document = SwaggerModule.createDocument(app, config);
+    // const document = SwaggerModule.createDocument(app, config);
 
-    SwaggerModule.setup('/', app, document);
-    
+    // SwaggerModule.setup('/', app, document);
+  app.enableCors();
   await app.listen(3000);
 }
 bootstrap();
