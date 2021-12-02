@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Teacher } from 'src/teacher/entities/teacher.entity';
 import { Repository } from 'typeorm';
 import { CreateChannelDto } from './dto/create-channel.dto';
 import { UpdateChannelDto } from './dto/update-channel.dto';
@@ -18,6 +19,11 @@ export class ChannelService {
   findAll(): Promise<Channel[]> {
     return this.channelRespository.find();
   }
+
+  findAllbyID(id: Teacher): Promise<Channel[]> {
+    return this.channelRespository.find({lecturerID: id})
+  }
+
 
   async findOne(id: string): Promise<Channel> {
     try{
