@@ -13,8 +13,7 @@ export class ChannelService {
 
   create(createChannelDto: CreateChannelDto): Promise<Channel> {
     const newChannel = this.channelRespository.create(createChannelDto);
-    return this.channelRespository.save(newChannel);
-    
+    return this.channelRespository.save(newChannel); 
   }
 
   findAll(): Promise<Channel[]> {
