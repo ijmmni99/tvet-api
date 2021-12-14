@@ -1,5 +1,6 @@
+import { Student } from "src/student/entities/student.entity";
 import { Teacher } from "src/teacher/entities/teacher.entity";
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class Channel {
@@ -20,4 +21,8 @@ export class Channel {
         Teacher.teacherId, { onUpdate: 'CASCADE', onDelete: 'CASCADE'})
     @JoinColumn({name: 'lecturerID'})
     lecturerID: Teacher;
+
+    @ManyToMany(() => Student)
+    @JoinTable()
+    students: Student[];
 }
