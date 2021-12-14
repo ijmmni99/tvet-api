@@ -28,7 +28,21 @@ export class StudentService {
       //handle error
       throw err;
     }
-  } 
+  }
+
+  async exist(id: string) {
+    try{
+      const student = await this.studentRespository.findOne(id);
+
+      if(student)
+        return true;
+      else
+        return false;
+
+    } catch (err) {
+      return false;
+    }
+  }
     
 
   async update(id: string, updateStudentDto: UpdateStudentDto): Promise<Student> {

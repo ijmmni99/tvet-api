@@ -1,4 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { Student } from "src/student/entities/student.entity";
 import { Teacher } from "src/teacher/entities/teacher.entity";
 
 export class CreateChannelDto {
@@ -17,4 +18,7 @@ export class CreateChannelDto {
 
     @ApiProperty()
     lecturerID: Teacher;
+
+    @ApiProperty()
+    students: Student[];
 }
