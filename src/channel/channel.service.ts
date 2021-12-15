@@ -21,7 +21,6 @@ export class ChannelService {
       {
         await this.studentService.create(element);
       }
-
     })
     
     const newChannel = this.channelRespository.create(createChannelDto);
