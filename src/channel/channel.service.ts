@@ -33,7 +33,6 @@ export class ChannelService {
 
   findAllbyID(id: Teacher): Promise<Channel[]> {
     return this.channelRespository.find({lecturerID: id})
-    
   }
 
 
