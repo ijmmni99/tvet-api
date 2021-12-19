@@ -6,6 +6,7 @@ import { CreateChannelDto } from './dto/create-channel.dto';
 import { UpdateChannelDto } from './dto/update-channel.dto';
 import { Channel } from './entities/channel.entity';
 import { StudentService} from './../student/student.service';
+import { Student } from 'src/student/entities/student.entity';
 
 @Injectable()
 export class ChannelService {
@@ -32,7 +33,7 @@ export class ChannelService {
   }
 
   findAllbyID(id: Teacher): Promise<Channel[]> {
-    return this.channelRespository.find({lecturerID: id})
+    return this.channelRespository.find({where: { lecturerID: id}, relations: ["students"]});
   }
 
 

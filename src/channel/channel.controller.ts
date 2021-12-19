@@ -3,6 +3,7 @@ import { Teacher } from 'src/teacher/entities/teacher.entity';
 import { ChannelService } from './channel.service';
 import { CreateChannelDto } from './dto/create-channel.dto';
 import { UpdateChannelDto } from './dto/update-channel.dto';
+import { Crud } from '@nestjsx/crud';
 
 @Controller('channel')
 export class ChannelController {
