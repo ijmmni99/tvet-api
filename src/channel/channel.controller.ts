@@ -4,6 +4,7 @@ import { ChannelService } from './channel.service';
 import { CreateChannelDto } from './dto/create-channel.dto';
 import { UpdateChannelDto } from './dto/update-channel.dto';
 import { Crud } from '@nestjsx/crud';
+import { Student } from 'src/student/entities/student.entity';
 
 @Controller('channel')
 export class ChannelController {
@@ -17,6 +18,11 @@ export class ChannelController {
   @Post('lecturer')
   findAllbyID(@Body() teacher: Teacher) {
     return this.channelService.findAllbyID(teacher);
+  }
+
+  @Post('student')
+  findAllbyIDStudent(@Body() student: Student) {
+    return this.channelService.findAllbyIDStudent(student);
   }
 
   @Get()

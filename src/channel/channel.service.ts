@@ -29,23 +29,24 @@ export class ChannelService {
   }
 
   findAll(): Promise<Channel[]> {
-    return this.channelRespository.find();
+    return this.channelRespository.find({relations: ["students"]});
   }
 
   findAllbyID(id: Teacher): Promise<Channel[]> {
     return this.channelRespository.find({where: { lecturerID: id}, relations: ["students"]});
   }
 
+  findAllbyIDStudent(student: Student): Promise<Channel[]> {
+    return this.channelRespository.createQueryBuilder('channel')
+      .leftJoinAndSelect('channel.students', 'channel_students')
+      .where("channel_students.studentId = :id", {id: student.studentId})
+      .getMany();
+    //return this.channelRespository.find({where: { students: id}});
+  }
 
-  async findOne(id: string): Promise<Channel> {
-    try{
-      const channel = await this.channelRespository.findOneOrFail(id); // SELECT * FROM Student WHERE Student.id = id;
-      return channel;
 
-    } catch (err){
-      //handle error
-      throw err;
-    }
+  findOne(id: string): Promise<Channel> {
+    return this.channelRespository.findOne({where: {channelID: id,}, relations: ["students"]})
   }
 
   async update(id: string, updateChannelDto: UpdateChannelDto): Promise<Channel> {
