@@ -59,6 +59,5 @@ export class ChannelService {
     const channel = await this.findOne(id);
 
     return this.channelRespository.remove(channel);
-    
   }
 }
