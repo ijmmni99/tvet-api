@@ -44,7 +44,6 @@ export class ChannelService {
     //return this.channelRespository.find({where: { students: id}});
   }
 
-
   findOne(id: string): Promise<Channel> {
     return this.channelRespository.findOne({where: {channelID: id,}, relations: ["students"]})
   }
