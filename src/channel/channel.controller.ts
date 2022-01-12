@@ -15,6 +15,11 @@ export class ChannelController {
     return this.channelService.create(createChannelDto);
   }
 
+  @Post('update')
+  async updateChannel(@Body() updateChannelDto: UpdateChannelDto) {
+    return this.channelService.updateChannel(updateChannelDto);
+  }
+
   @Post('lecturer')
   findAllbyID(@Body() teacher: Teacher) {
     return this.channelService.findAllbyID(teacher);

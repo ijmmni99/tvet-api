@@ -28,6 +28,19 @@ export class ChannelService {
     return this.channelRespository.save(newChannel); 
   }
 
+  async updateChannel(updateChannelDto: UpdateChannelDto): Promise<Channel> {
+    
+    updateChannelDto.students.forEach(async (element) => {
+      let data = await this.studentService.exist(element.studentId);
+
+      if(!data)
+      {
+        await this.studentService.create(element);
+      }
+    })
+    return this.channelRespository.save(updateChannelDto);
+  }
+
   findAll(): Promise<Channel[]> {
     return this.channelRespository.find({relations: ["students"]});
   }
