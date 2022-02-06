@@ -22,7 +22,7 @@ export class Channel {
     @JoinColumn({name: 'lecturerID'})
     lecturerID: Teacher;
 
-    @ManyToMany(() => Student)
+    @ManyToMany(() => Student, (Student) => Student.studentId, {onDelete: 'CASCADE'})
     @JoinTable()
     students: Student[];
 }

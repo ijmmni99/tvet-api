@@ -7,13 +7,20 @@ import { UpdateChannelDto } from './dto/update-channel.dto';
 import { Channel } from './entities/channel.entity';
 import { StudentService} from './../student/student.service';
 import { Student } from 'src/student/entities/student.entity';
+import { TeacherService } from 'src/teacher/teacher.service';
 
 @Injectable()
 export class ChannelService {
 
-  constructor(@InjectRepository(Channel) private channelRespository: Repository<Channel>, private studentService: StudentService) {}
+  constructor(@InjectRepository(Channel) private channelRespository: Repository<Channel>, private studentService: StudentService, private teacherService: TeacherService) {}
 
-  create(createChannelDto: CreateChannelDto): Promise<Channel> {
+  async create(createChannelDto: CreateChannelDto): Promise<Channel> {
+
+    let teacherData = await this.teacherService.exist(createChannelDto.lecturerID.teacherId);
+
+    if(!teacherData){
+      await this.teacherService.create(createChannelDto.lecturerID);
+    }
 
     createChannelDto.students.forEach(async (element) => {
       let data = await this.studentService.exist(element.studentId);

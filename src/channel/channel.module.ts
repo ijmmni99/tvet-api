@@ -5,11 +5,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Channel } from './entities/channel.entity';
 import { Teacher } from 'src/teacher/entities/teacher.entity';
 import { StudentModule } from 'src/student/student.module';
+import { TeacherModule } from 'src/teacher/teacher.module';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([Channel]),
-    StudentModule
+    StudentModule,
+    TeacherModule
   ],
   controllers: [ChannelController],
   providers: [ChannelService]

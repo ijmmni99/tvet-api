@@ -29,6 +29,20 @@ export class TeacherService {
       throw err;
     }
   } 
+
+  async exist(id: string) {
+    try{
+      const teacher = await this.teacherRespository.findOne(id);
+
+      if(teacher)
+        return true;
+      else
+        return false;
+
+    } catch (err) {
+      return false;
+    }
+  }
     
 
   async update(id: string, updateTeacherDto: UpdateTeacherDto): Promise<Teacher> {

@@ -10,6 +10,7 @@ import { Channel } from 'src/channel/entities/channel.entity';
     TypeOrmModule.forFeature([Teacher])
   ],
   controllers: [TeacherController],
-  providers: [TeacherService]
+  providers: [TeacherService],
+  exports: [TeacherService]
 })
 export class TeacherModule {}
