@@ -4,9 +4,9 @@ const config: SqlServerConnectionOptions  = {
     type: 'mssql',
     host: 'localhost',
     port: 1433,
-    database: 'tvet',
-    username: 'nyz',
-    password: 'nyz123',
+    database: 'dbtvet',
+    username: 'dbCrew',
+    password: 'DB(rew22',
     entities: ['dist/src/**/*.entity.js'],
     synchronize: false,
     options: {
@@ -20,6 +20,27 @@ const config: SqlServerConnectionOptions  = {
         migrationsDir: 'src/db/migrations'
     },
 }
+
+// const config: SqlServerConnectionOptions  = {
+//     type: 'mssql',
+//     host: 'localhost',
+//     port: 1433,
+//     database: 'tvet',
+//     username: 'nyz',
+//     password: 'nyz123',
+//     entities: ['dist/src/**/*.entity.js'],
+//     synchronize: false,
+//     options: {
+//         enableArithAbort: true,
+//         encrypt: false
+//       },
+//     migrations: [
+//         'dist/src/db/migrations/*.js'
+//     ],
+//     cli: {
+//         migrationsDir: 'src/db/migrations'
+//     },
+// }
 
 // require('dotenv').config();
 
